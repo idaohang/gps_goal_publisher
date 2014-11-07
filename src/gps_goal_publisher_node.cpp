@@ -2,6 +2,10 @@
 #include <sensor_msgs/NavSatStatus.h>
 #include <sensor_msgs/NavSatFix.h>
 #include <std_msgs/Bool.h>
+// ifstream constructor.
+#include <iostream>     // std::cout
+#include <fstream>      // std::ifstream
+using namespace std;
 
 ros::Publisher goal_publisher;
 bool next = true;
