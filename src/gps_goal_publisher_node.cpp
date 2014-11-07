@@ -9,7 +9,6 @@ using namespace std;
 
 ros::Publisher goal_publisher;
 bool next = true;
-ros::Rate loop_rate(4);
 
 
 int main(int argc, char **argv)
@@ -20,19 +19,23 @@ int main(int argc, char **argv)
 	sensor_msgs::NavSatFix msg;
 	msg.header.stamp = ros::Time::now();
 	double gpsPoint[2];
-	ifstream inputFile("~/gps_waypoints.txt");
+	ifstream inputFile("/home/irl/gps_waypoints.txt");
+	ros::Rate loop_rate(4);
+
 	while(ros::ok())
 	{
 		if(next==true)
 		{
+			//ROS_INFO("here");
 			next = false;
 			if (inputFile) 
 			{        
-			    double value;
-			    inputFile >> value;
-			    gpsPoint[0]=(value);
-			    inputFile >> value;
-			    gpsPoint[1]=(value);
+			    float value1,value2;
+			    inputFile >> value1;
+			    gpsPoint[0]=(value1);
+			    inputFile >> value2;
+			    gpsPoint[1]=(value2);
+			    ROS_INFO("setting new goal to %f %f",value1,value2);
 			}
 
 		}
