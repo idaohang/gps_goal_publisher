@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 {
 	ros::init(argc, argv, "gps_goal_publisher");
 	ros::NodeHandle n;
-	goal_publisher = n.advertise<sensor_msgs::NavSatFix>("gps_goal", 10);
+	goal_publisher = n.advertise<sensor_msgs::NavSatFix>("current_goal/fix", 10);
 	sensor_msgs::NavSatFix msg;
 	msg.header.stamp = ros::Time::now();
 	double gpsPoint[2];
